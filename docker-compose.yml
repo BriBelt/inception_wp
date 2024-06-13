@@ -4,25 +4,42 @@ services:
     nginx:
         container_name: nginx
         build: ./requirements/nginx
+        env_file:
+            - ./.env
         ports:
             - 443:443
         restart: on-failure
         networks:
-            - inception_ntw 
+            - wp_ntw 
         volumes:
             - wordpress-volume:/var/www/html 
     wordpress:
         container_name: wordpress
         build: ./requirements/wordpress
+        env_file:
+            - ./.env
         expose:
             - 9000
         restart: on-failure
         networks:
-            - inception_ntw 
+            - wp_ntw 
         volumes:
             - wordpress-volume:/var/www/html 
+    mariadb:
+        container_name: mariadb
+        build: ./requirements/mariadb
+        env_file:
+            - ./.env
+        restart: on-failure
+        ports:
+            - 3306:3306
+        networks:
+            - wp_ntw 
+        volumes:
+            - mariadb-volume:/var/lib/mysql
 volumes:
     wordpress-volume:
+    mariadb-volume:
 networks:
-    inception_ntw:
+    wp_ntw:
 
