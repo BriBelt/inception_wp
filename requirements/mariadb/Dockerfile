@@ -8,11 +8,12 @@ RUN apt-get update && apt-get install -y mariadb-server && \
 # Exposing the default MariaDB port
 EXPOSE 3306
 
+COPY files/initdb.sh /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/initdb.sh
+
 # Initialize the database
-RUN service mysql start && mysql -u root -e "CREATE DATABASE IF \
-    NOT EXISTS WordPress;" && mysql -u root -e "CREATE USER 'user'@'localhost' \    IDENTIFIED BY 'password' && GRANT ALL PRIVILEGES ON WordPress.* TO \
-    'user'@'localhost' && \
-    EXIT;
+ENTRYPOINT ["/usr/local/bin/initdb.sh"]
 
 CMD ["mysqld"]
 
