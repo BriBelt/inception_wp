@@ -3,17 +3,16 @@ FROM debian:bullseye
 # Install MariaDB server
 RUN apt-get update && apt-get install -y mariadb-server && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir /run/mysql
 
 # Exposing the default MariaDB port
 EXPOSE 3306
 
-COPY files/initdb.sh /usr/local/bin/
+COPY files/initdb.sh /initdb.sh
 
-RUN chmod +x /usr/local/bin/initdb.sh
+RUN chmod +x /initdb.sh
 
 # Initialize the database
-ENTRYPOINT ["/usr/local/bin/initdb.sh"]
-
-CMD ["mysqld"]
+CMD ["/initdb.sh"]
 

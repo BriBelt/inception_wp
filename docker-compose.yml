@@ -7,3 +7,22 @@ services:
         ports:
             - 443:443
         restart: on-failure
+        networks:
+            - inception_ntw 
+        volumes:
+            - wordpress-volume:/var/www/html 
+    wordpress:
+        container_name: wordpress
+        build: ./requirements/wordpress
+        expose:
+            - 9000
+        restart: on-failure
+        networks:
+            - inception_ntw 
+        volumes:
+            - wordpress-volume:/var/www/html 
+volumes:
+    wordpress-volume:
+networks:
+    inception_ntw:
+
