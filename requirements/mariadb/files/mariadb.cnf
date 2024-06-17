@@ -1,0 +1,14 @@
+[server]
+
+[client]
+
+# The MariaDB Server
+
+[mysql]
+
+# directory where you want to put your data
+data = /usr/local/mysql/var
+
+user = mysql
+port = 3306
+basedir = /usr

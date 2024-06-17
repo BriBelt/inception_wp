@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y mariadb-server && \
 # Exposing the default MariaDB port
 EXPOSE 3306
 
+COPY files/mariadb.cnf /etc/mysql/mariadb/mariabd.conf.d/.
+
 COPY files/initdb.sh /initdb.sh
 
 RUN chmod +x /initdb.sh
