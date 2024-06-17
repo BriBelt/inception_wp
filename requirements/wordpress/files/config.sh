@@ -1,9 +1,5 @@
 #!/bin/sh
 
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar --silent
-
-chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/
-
 wp core download --allow-root
 
 wp config create --dbname=$WORDPRESS_DB_NAME --dbuser=$WORDPRESS_DB_USER --dbpass=$WORDPRESS_DB_PASSWORD --dbhost=$WORDPRESS_DB_HOST --allow-root
