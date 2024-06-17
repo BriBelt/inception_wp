@@ -31,6 +31,6 @@ COPY files/config.sh /usr/local/bin/config.sh
 
 RUN chmod +x /usr/local/bin/config.sh
 
-ENTRYPOINT ["/usr/local/bin/config.sh"]
+ENTRYPOINT ["sh", "/usr/local/bin/config.sh"]
 
 CMD ["php-fpm7.4", "-F"]
