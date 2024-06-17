@@ -12,3 +12,4 @@ data = /usr/local/mysql/var
 user = mysql
 port = 3306
 basedir = /usr
+bind-address = 0.0.0.0
