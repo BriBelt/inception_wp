@@ -15,4 +15,3 @@ RUN chmod +x /initdb.sh
 
 # Initialize the database
 CMD ["/initdb.sh"]
-
