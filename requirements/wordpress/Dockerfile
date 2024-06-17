@@ -30,6 +30,8 @@ COPY files/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 
 COPY files/config.sh /usr/local/bin/config.sh
 
+RUN chmod +x /usr/local/bin/config.sh
+
 ENTRYPOINT ["/usr/local/bin/config.sh"]
 
 CMD ["php-fpm7.4", "-F"]
