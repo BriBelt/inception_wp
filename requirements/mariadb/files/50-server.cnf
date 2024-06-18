@@ -4,12 +4,13 @@
 
 # The MariaDB Server
 
-[mysql]
+[mysqld]
 
 # directory where you want to put your data
 data = /usr/local/mysql/var
-
-user = mysql
+datadir = /var/lib/mysql
+socket = /var/run/mysqld/mysqld.sock
+skip-networking = false
+user = root 
 port = 3306
-basedir = /usr
 bind-address = 0.0.0.0
