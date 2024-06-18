@@ -12,7 +12,5 @@ COPY files/initdb.sh /initdb.sh
 
 RUN chmod +x /initdb.sh
 
-#RUN touch /run/mysqld/mysql.sock
-
 # Initialize the database
-CMD ["/initdb.sh"] 
+CMD ["./initdb.sh"] 
