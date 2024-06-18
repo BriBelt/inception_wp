@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y mariadb-server && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir /run/mysql
 
-COPY files/50-server.cnf /etc/mysql/mariadb/mariabd.conf.d/.
+COPY files/50-server.cnf /etc/mysql/mariabd.conf.d/.
 
 COPY files/initdb.sh /initdb.sh
 
