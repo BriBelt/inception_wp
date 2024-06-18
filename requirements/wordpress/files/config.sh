@@ -5,7 +5,15 @@
 # if not, create it
 # also do it in the mariadb .sh
 # /var/www/html/
-if [ -f /var/www/html/wp-config.ph ]; then
+
+sleep 9
+# Verificar la disponibilidad de MariaDB
+while ! mysqladmin ping -h"$WORDPRESS_DB_HOST" --silent; do
+    echo "Waiting for MariaDB..."
+    sleep 2
+done
+
+if [ -f /var/www/html/wp-config.php ]; then
 	echo "Wordpress is already installed"
 else
 
