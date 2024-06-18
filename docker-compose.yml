@@ -25,7 +25,7 @@ services:
             - wp_ntw 
         volumes:
             - wordpress-volume:/var/www/html 
-	depends_on:
+        depends_on:
             - mariadb
     mariadb:
         container_name: mariadb
