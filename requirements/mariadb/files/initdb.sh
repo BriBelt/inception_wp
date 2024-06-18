@@ -14,8 +14,8 @@ mysql_install_db >/dev/null 2>&1
 # Start the MariaDB service
 if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
 	rm -f "$MYSQL_INIT_FILE"
-#service mysql start
 
+	service mysql start
 #service mysql status 
 
 
