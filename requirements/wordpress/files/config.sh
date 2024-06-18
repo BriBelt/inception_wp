@@ -5,8 +5,7 @@
 # if not, create it
 # also do it in the mariadb .sh
 # /var/www/html/
-if [ -f /var/www/html/wp-config.ph ]
-then
+if [ -f /var/www/html/wp-config.ph ]; then
 	echo "Wordpress is already installed"
 else
 

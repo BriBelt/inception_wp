@@ -28,6 +28,7 @@ if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
 
 	mysql -u root -e "FLUSH PRIVILEGES;"
 	mysqld_safe --init-file=$MYSQL_INIT_FILE >/dev/null 2>&1
+	sleep 10
 else
 	mysqld_safe >/dev/null 2>&1
 fi
