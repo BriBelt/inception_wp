@@ -27,8 +27,8 @@ EXPOSE 443
 
 COPY files/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf 
 
-COPY files/config.sh /usr/local/bin/config.sh
+COPY files/config.sh /var/www/config.sh
 
-RUN chmod +x /usr/local/bin/config.sh
+RUN chmod +x /var/www/config.sh
 
-CMD ["/usr/local/bin/config.sh"]
+CMD ["/var/www/config.sh"]
