@@ -6,7 +6,8 @@
 # directory where you want to put your data
 data = /usr/local/mysql/var
 datadir = /var/lib/mysql
-socket = /var/run/mysqld/mysqld.sock
+socket = /run/mysqld/mysqld.sock
+pid-file = /run/mysqld/mysqld.pid
 skip-networking = false
 user = mysql 
 port = 3306
