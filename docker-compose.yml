@@ -11,8 +11,8 @@ services:
         restart: on-failure
         networks:
             - wp_ntw 
-        volumes:
-            - wordpress-volume:/var/www/html 
+        #volumes:
+        #    - wordpress-volume:/var/www/html 
     wordpress:
         container_name: wordpress
         build: ./requirements/wordpress
