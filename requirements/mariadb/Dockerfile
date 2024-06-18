@@ -6,15 +6,11 @@ RUN apt-get update && apt-get install -y mariadb-server && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir /run/mysql
 
-# Exposing the default MariaDB port
-EXPOSE 3306
-
 COPY files/50-server.cnf /etc/mysql/mariadb/mariabd.conf.d/.
 
 COPY files/initdb.sh /initdb.sh
 
 RUN chmod +x /initdb.sh
 
-#ENTRYPOINT ["/initdb.sh"]
 # Initialize the database
 CMD ["/initdb.sh"] 
