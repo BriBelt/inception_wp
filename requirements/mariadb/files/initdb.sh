@@ -26,6 +26,5 @@ if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
 	mysqld_safe --init-file=$MYSQL_INIT_FILE >/dev/null 2>&1
 else
 	mysqld_safe >/dev/null 2>&1
+fi
 # Execute the CMD specified in the Dockerfile
-exec "$@"
-

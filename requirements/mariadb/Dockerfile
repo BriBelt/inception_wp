@@ -15,6 +15,6 @@ COPY files/initdb.sh /initdb.sh
 
 RUN chmod +x /initdb.sh
 
-ENTRYPOINT ["/initdb.sh"]
+#ENTRYPOINT ["/initdb.sh"]
 # Initialize the database
-CMD mysqld_safe
+CMD ["/initdb.sh"] 
