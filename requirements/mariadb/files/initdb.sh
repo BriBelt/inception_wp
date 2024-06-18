@@ -2,6 +2,10 @@
 
 # Variable that contains the path to the SQL file that will be used to initialize our db
 MYSQL_INIT_FILE="/createdb.sql"
+
+chown -R mysql: /var/lib/mysql
+chmod 777 /var/lib/mysql
+
 set -e
 
 # Suppresses all the messages stdout and stderr to the /dev/null path
