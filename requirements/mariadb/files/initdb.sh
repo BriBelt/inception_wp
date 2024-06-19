@@ -15,6 +15,7 @@ if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
 	rm -f "$MYSQL_INIT_FILE"
 
 	touch var/run/mysqld/mysqld.pid
+	touch var/run/mysqld/mysqld.sock
 	mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql >/dev/null 2>&1
 # Initialize the database and create user if not already done
 	mysql -u root -e "CREATE DATABASE IF NOT EXISTS \´${WORDPRESS_DB_NAME}\´;"
