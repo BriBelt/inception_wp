@@ -25,7 +25,7 @@ RUN chown -R www-data:www-data /var/www/html && \
 
 EXPOSE 443 
 
-COPY files/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf 
+COPY files/www.conf /etc/php/7.4/fpm/www.conf 
 
 COPY files/config.sh /var/www/config.sh
 
