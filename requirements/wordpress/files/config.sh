@@ -13,7 +13,7 @@ sleep 10
 #    sleep 2
 #done
 
-if [ -f ./wp-config.php ]; then
+if [ -f var/www/html/wp-config.php ]; then
 	echo "Wordpress is already installed"
 else
 	echo "Installing WordPress..."
