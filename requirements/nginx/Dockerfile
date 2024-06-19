@@ -10,8 +10,8 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 	-keyout /etc/ssl/private/rootKey.key \
 	-out /etc/ssl/certs/rootCert.crt
 
-COPY files/default /etc/nginx/sites-enabled/
-COPY files/default /etc/nginx/sites-available/
+#COPY files/default /etc/nginx/sites-enabled/
+#COPY files/default /etc/nginx/sites-available/
 COPY files/default /etc/nginx/conf.d/nginx.conf
 #COPY files/index.html /var/www/html/
 
