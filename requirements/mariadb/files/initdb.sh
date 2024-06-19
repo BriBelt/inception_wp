@@ -6,7 +6,6 @@ MYSQL_INIT_FILE="/createdb.sql"
 set -e
 
 # Suppresses all the messages stdout and stderr to the /dev/null path
-mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql >/dev/null 2>&1
 
 chown -R mysql: /var/lib/mysql
 chmod 777 /var/lib/mysql
@@ -15,6 +14,7 @@ chmod 777 /var/lib/mysql
 if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
 	rm -f "$MYSQL_INIT_FILE"
 
+	mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql >/dev/null 2>&1
 # Initialize the database and create user if not already done
 	mysql -u root -e "CREATE DATABASE IF NOT EXISTS \´${WORDPRESS_DB_NAME}\´;"
 	mysql -u root -e "CREATE USER \´${WORDPRESS_DB_USER}\´@'localhost' IDENTIFIED BY '${WORDPRESS_DB_USER}';"
