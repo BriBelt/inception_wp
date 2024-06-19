@@ -2,7 +2,7 @@ FROM debian:bullseye
 
 # Install php, and needed tools to install wordpress
 RUN apt-get update && apt-get install -y php7.4 \
-	php7.4-mysql php7.4-fpm curl \
+	php7.4-mysql php7.4-fpm curl zip unzip \
 	wget sendmail mariadb-client && apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -13,12 +13,11 @@ RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 # Get WordPress
 WORKDIR /var/www/html
 
-RUN wget https://wordpress.org/latest.tar.gz && \
-    tar -xzf latest.tar.gz && \
+RUN wget https://wordpress.org/latest.zip && \
+    unzip latest.zip && \
     mkdir -p /run/php/ && \
-    rm -rf latest.tar.gz wordpress
-
-RUN mv wordpress/* . && rmdir wordpress
+    rm -rf latest.zip && \
+    mv wordpress/* . && rmdir wordpress
 
 # Set the correct permissions for wordpress
 RUN chown -R www-data:www-data /var/www/html && \
