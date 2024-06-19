@@ -35,4 +35,3 @@ if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
 else
 	mysqld_safe >/dev/null 2>&1
 fi
-# Execute the CMD specified in the Dockerfile

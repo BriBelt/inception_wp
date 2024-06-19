@@ -3,7 +3,7 @@ FROM debian:bullseye
 # Install php, and needed tools to install wordpress
 RUN apt-get update && apt-get install -y php7.4 \
 	php7.4-mysql php7.4-fpm curl \
-	wget mariadb-client && apt-get clean && \
+	wget sendmail mariadb-client && apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar --silent
