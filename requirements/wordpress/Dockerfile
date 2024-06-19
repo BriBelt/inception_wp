@@ -31,4 +31,4 @@ COPY files/config.sh /var/www/config.sh
 
 RUN chmod +x /var/www/config.sh
 
-CMD ["./config.sh"]
+CMD ["/var/www/config.sh"]
