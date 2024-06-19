@@ -9,7 +9,7 @@ chmod 777 /var/lib/mysql
 set -e
 
 # Suppresses all the messages stdout and stderr to the /dev/null path
-mysql_install_db >/dev/null 2>&1
+mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql >/dev/null 2>&1
 
 # Start the MariaDB service
 if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
