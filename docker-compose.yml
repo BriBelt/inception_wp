@@ -44,5 +44,6 @@ volumes:
     mariadb-volume:
 networks:
     wp-ntw:
-    name: wp-ntw
+        external:
+            name: wp-ntw
 
