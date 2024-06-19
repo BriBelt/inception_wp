@@ -1,7 +1,7 @@
 FROM debian:bullseye
 
 # Install MariaDB server
-RUN apt-get update && apt-get install -y mariadb-server coreutils && \
+RUN apt-get update && apt-get install -y mariadb-server && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir /run/mysql
