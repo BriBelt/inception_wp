@@ -10,7 +10,7 @@ services:
             - 443:443
         restart: on-failure
         networks:
-            - wp_ntw 
+            - wp-ntw 
         volumes:
             - wordpress-volume:/var/www/html 
     wordpress:
@@ -22,7 +22,7 @@ services:
             - 9000
         restart: on-failure
         networks:
-            - wp_ntw 
+            - wp-ntw 
         volumes:
             - wordpress-volume:/var/www/html 
         depends_on:
@@ -36,12 +36,13 @@ services:
         expose:
             - 3306
         networks:
-            - wp_ntw 
+            - wp-ntw 
         volumes:
             - mariadb-volume:/var/lib/mysql
 volumes:
     wordpress-volume:
     mariadb-volume:
 networks:
-    wp_ntw:
+    wp-ntw:
+    name: wp-ntw
 
