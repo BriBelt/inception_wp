@@ -9,13 +9,12 @@ set -e
 
 chown -R mysql: /var/lib/mysql
 chmod 777 /var/lib/mysql
-mkdir var/run/mysqld
-touch var/run/mysqld/mysqld.pid
 
 # Start the MariaDB service
 if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
 	rm -f "$MYSQL_INIT_FILE"
 
+	touch var/run/mysqld/mysqld.pid
 	mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql >/dev/null 2>&1
 # Initialize the database and create user if not already done
 	mysql -u root -e "CREATE DATABASE IF NOT EXISTS \´${WORDPRESS_DB_NAME}\´;"
