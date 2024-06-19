@@ -1,18 +1,6 @@
 version: '3.3'
 
 services:
-    nginx:
-        container_name: nginx
-        build: ./requirements/nginx
-        env_file:
-            - ./.env
-        ports:
-            - 443:443
-        restart: on-failure
-        networks:
-            - wp-ntw 
-        volumes:
-            - wordpress-volume:/var/www/html 
     wordpress:
         container_name: wordpress
         build: ./requirements/wordpress
@@ -40,6 +28,20 @@ services:
             - wp-ntw 
         volumes:
             - mariadb-volume:/var/lib/mysql
+    nginx:
+        container_name: nginx
+        build: ./requirements/nginx
+        env_file:
+            - ./.env
+        ports:
+            - 443:443
+        restart: on-failure
+        networks:
+            - wp-ntw 
+        volumes:
+            - wordpress-volume:/var/www/html 
+        depends_on:
+            - wordpress 
 volumes:
     wordpress-volume:
     mariadb-volume:
