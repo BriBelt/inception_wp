@@ -14,7 +14,6 @@ mysql_install_db >/dev/null 2>&1
 if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
 
 	rm -f "$MYSQL_INIT_FILE"
-	echo "CREATING DATABASE, USERS and PASSWORDS..."
 	echo "CREATE DATABASE $MYSQL_DATABASE;" >> "$MYSQL_INIT_FILE"
 	echo "CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" >> "$MYSQL_INIT_FILE"
 	echo "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';" >> "$MYSQL_INIT_FILE"
@@ -33,7 +32,6 @@ if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
 
 #	mysql -u root -e "FLUSH PRIVILEGES;"
 	mysqld_safe --init-file=$MYSQL_INIT_FILE >/dev/null 2>&1
-	sleep 10
 else
 	mysqld_safe >/dev/null 2>&1
 fi
