@@ -11,9 +11,6 @@ chmod 777 /var/lib/mysql
 mysql_install_db >/dev/null 2>&1
 
 # Start the MariaDB service
-if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
-
-	rm -f "$MYSQL_INIT_FILE"
 	echo "CREATE DATABASE $MYSQL_DATABASE;" >> "$MYSQL_INIT_FILE"
 	echo "CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" >> "$MYSQL_INIT_FILE"
 	echo "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';" >> "$MYSQL_INIT_FILE"
@@ -30,6 +27,3 @@ if [ ! -d "/var/lib/mysql/$MYSQL_DATABASE" ]; then
 
 #	mysql -u root -e "FLUSH PRIVILEGES;"
 	mysqld_safe --init-file=$MYSQL_INIT_FILE >/dev/null 2>&1
-else
-	mysqld_safe >/dev/null 2>&1
-fi
