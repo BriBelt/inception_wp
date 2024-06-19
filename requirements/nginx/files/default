@@ -3,7 +3,7 @@ server
 	listen 443 ssl;
 	listen [::]:443 ssl;
 	
-	server_name "${DOMAIN_NAME}" www."${DOMAIN_NAME}";
+	server_name bbeltran.42.fr www.bbeltran.42.fr;
 
 	root /var/www/html/;
 	index index.php index.html index.htm index.nginx-debian.html;
