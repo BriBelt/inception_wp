@@ -6,16 +6,17 @@
 # also do it in the mariadb .sh
 # /var/www/html/
 
-sleep 9
+sleep 10 
 # Verificar la disponibilidad de MariaDB
-while ! mysqladmin ping -h"$WORDPRESS_DB_HOST" --silent; do
-    echo "Waiting for MariaDB..."
-    sleep 2
-done
+#while ! mysqladmin ping -h "$WORDPRESS_DB_HOST" --silent; do
+#    echo "Waiting for MariaDB..."
+#    sleep 2
+#done
 
 if [ -f ./wp-config.php ]; then
 	echo "Wordpress is already installed"
 else
+	echo "Installing WordPress..."
 
 	wp core download --allow-root
 
@@ -25,5 +26,7 @@ else
 
 	wp user create $WORDPRESS_USER $WORDPRESS_USER_EMAIL --role=editor --user_pass=$WORDPRESS_USER_PASSWORD --allow-root
 fi
+
+echo "Wordpress was correctly installed!"
 
 /usr/sbin/php-fpm7.4 --nodaemonize
