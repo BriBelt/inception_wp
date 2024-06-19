@@ -45,4 +45,3 @@ volumes:
     mariadb-volume:
 networks:
     wp-ntw:
-        name: wp-ntw
