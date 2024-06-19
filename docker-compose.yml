@@ -13,6 +13,7 @@ services:
             - wp-ntw 
         volumes:
             - mariadb-volume:/var/lib/mysql
+        restart: always
     wordpress:
         container_name: wordpress
         build: ./requirements/wordpress
@@ -28,6 +29,7 @@ services:
             - ./requirements/wordpress/files/www.conf:/etc/php/7.4/fpm/pool.d/www.conf
         depends_on:
             - mariadb
+        restart: always
     nginx:
         container_name: nginx
         build: ./requirements/nginx
@@ -42,6 +44,7 @@ services:
             - wordpress-volume:/var/www/html 
         depends_on:
             - wordpress 
+        restart: always
 volumes:
     wordpress-volume:
     mariadb-volume:

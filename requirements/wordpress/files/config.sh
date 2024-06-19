@@ -13,7 +13,7 @@ while ! mysqladmin ping -h"$WORDPRESS_DB_HOST" --silent; do
     sleep 2
 done
 
-if [ -f /var/www/html/wp-config.php ]; then
+if [ -f ./wp-config.php ]; then
 	echo "Wordpress is already installed"
 else
 
