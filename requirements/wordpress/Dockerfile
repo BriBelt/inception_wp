@@ -18,6 +18,8 @@ RUN wget https://wordpress.org/latest.tar.gz && \
     mkdir -p /run/php/ && \
     rm -rf latest.tar.gz wordpress
 
+RUN mv wordpress/* . && rmdir wordpress
+
 # Set the correct permissions for wordpress
 RUN chown -R www-data:www-data /var/www/html && \
     chmod -R 755 /var/www/html && \
