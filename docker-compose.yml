@@ -48,15 +48,15 @@ services:
 volumes:
     wordpress-volume:
         driver: local
-	driver_opts:
-	    type: none
-	    o: bind
-	    device: /home/bbeltran/data/wordpress-volume
+        driver_opts:
+            type: none
+            o: bind
+            device: /home/bbeltran/data/wordpress-volume
     mariadb-volume:
         driver: local
-	driver_opts:
-	    type: none
-	    o: bind
-	    device: /home/bbeltran/data/mariadb-volume
+        driver_opts:
+            type: none
+            o: bind
+            device: /home/bbeltran/data/mariadb-volume
 networks:
     wp-ntw:
