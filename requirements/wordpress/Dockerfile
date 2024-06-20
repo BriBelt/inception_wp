@@ -16,7 +16,8 @@ RUN wget https://wordpress.org/latest.zip && \
     unzip latest.zip && \
     mkdir -p /run/php/ && \
     rm -rf latest.zip && \
-    mv wordpress/* . && rmdir wordpress
+    mv wordpress/* . && rmdir wordpress && \
+    mkdir -p /var/www/
 
 # Set the correct permissions for wordpress
 RUN chown -R www-data:www-data /var/www/html && \
