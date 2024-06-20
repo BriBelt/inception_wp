@@ -8,6 +8,7 @@
 
 sleep 10 
 # Verificar la disponibilidad de MariaDB
+echo "$WORDPRESS_DB_HOST"
 while ! mysqladmin ping -h"$WORDPRESS_DB_HOST" --silent; do
     echo "Waiting for MariaDB..."
     sleep 2
