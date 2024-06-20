@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Variable that contains the path to the SQL file that will be used to initialize our db
-cd  /var/lib/mysql
-MYSQL_INIT_FILE="createdb.sql"
+MYSQL_INIT_FILE="/createdb.sql"
 
 # Suppresses all the messages stdout and stderr to the /dev/null path
 
