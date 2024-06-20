@@ -21,6 +21,7 @@ else
 	echo "Downloading WordPress..."
 	#wp core download --allow-root
 
+	wp config create
 	echo "Creating Wordpress/Mariadb connection..."
 	wp config create --dbname=$WORDPRESS_DB_NAME --dbuser=$WORDPRESS_DB_USER --dbpass=$WORDPRESS_DB_PASSWORD --dbhost=$WORDPRESS_DB_HOST --allow-root
 
