@@ -3,7 +3,8 @@ version: '3.3'
 services:
     mariadb:
         container_name: mariadb
-        build: ./requirements/mariadb
+        build:
+            context: ./requirements/mariadb
         env_file:
             - .env
         restart: on-failure
@@ -16,7 +17,8 @@ services:
         restart: always
     wordpress:
         container_name: wordpress
-        build: ./requirements/wordpress
+        build: 
+            context: ./requirements/wordpress
         env_file:
             - .env
         expose:
@@ -32,7 +34,8 @@ services:
         restart: always
     nginx:
         container_name: nginx
-        build: ./requirements/nginx
+        build:
+            context: ./requirements/nginx
         env_file:
             - .env
         ports:
