@@ -4,7 +4,8 @@ FROM debian:bullseye
 RUN apt-get update && apt-get install -y mariadb-server && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    mkdir /run/mysqld && mkdir /run/mysql
+    mkdir /run/mysql && chmod +x /run/mysql
+    #&& mkdir /run/mysql
 
 COPY files/50-server.cnf /etc/mysql/mariabd.conf.d/.
 
