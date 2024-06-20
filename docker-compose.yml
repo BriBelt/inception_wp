@@ -43,11 +43,13 @@ services:
         restart: on-failure
         networks:
             - wp-ntw 
-        #volumes:
-            #- wordpress-volume:/var/www/html 
+        volumes:
+            - wordpress-volume:/var/www/html 
         depends_on:
             - wordpress 
         restart: always
+networks:
+    wp-ntw:
 volumes:
     wordpress-volume:
         driver: local
@@ -61,5 +63,3 @@ volumes:
             type: none
             o: bind
             device: /home/bbeltran/data/mariadb-volume
-networks:
-    wp-ntw:
