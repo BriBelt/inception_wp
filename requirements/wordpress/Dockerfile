@@ -39,6 +39,8 @@ COPY files/www.conf /etc/php/7.4/fpm/www.conf
 # configure it.
 COPY files/config.sh /var/www/config.sh
 
+COPY files/wp-config.php.custom /var/www/html/wp-config.php.custom
+
 # Set permissions to the script so we can execute it.
 RUN chmod +x /var/www/config.sh
 
