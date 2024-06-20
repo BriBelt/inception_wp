@@ -11,7 +11,6 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
 # Get WordPress
-WORKDIR /var/www/html
 
 RUN wget https://wordpress.org/latest.zip && \
     unzip latest.zip && \
@@ -31,5 +30,7 @@ COPY files/www.conf /etc/php/7.4/fpm/www.conf
 COPY files/config.sh /var/www/config.sh
 
 RUN chmod +x /var/www/config.sh
+
+WORKDIR /var/www/html
 
 CMD ["/var/www/config.sh"]
