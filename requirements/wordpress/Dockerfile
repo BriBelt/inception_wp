@@ -12,12 +12,13 @@ RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
 # Get WordPress
 
+RUN mkdir -p /var/www/html && cd /var/www/html
+
 RUN wget https://wordpress.org/latest.zip && \
     unzip latest.zip && \
     mkdir -p /run/php/ && \
     rm -rf latest.zip && \
     mv wordpress/* . && rmdir wordpress && \
-    mkdir -p /var/www/html
 
 # Set the correct permissions for wordpress
 RUN chown -R www-data:www-data /var/www/html && \
