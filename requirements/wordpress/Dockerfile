@@ -19,13 +19,13 @@ RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 # and execute.
 RUN mkdir -p /var/www/html && \
     chown -R www-data:www-data /var/www/html && \
-    chmod -R 755 /var/www/html && \
+    chmod -R 755 /var/www/html
 
 # Get WordPress
 #RUN wget https://wordpress.org/latest.zip && \
 #    unzip latest.zip && \
 RUN mkdir -p /run/php/ && \
-    chmod -R 755 /run/php && \
+    chmod -R 755 /run/php
     #rm -rf latest.zip && \
     #mv wordpress/* /var/www/html/ && rmdir wordpress && \
 
