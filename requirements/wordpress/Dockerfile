@@ -36,7 +36,7 @@ COPY files/config.sh /var/www/config.sh
 
 # I have to add this file because it is not creating
 # the wp-config.php file
-COPY files/wp-config.php.custom /var/www/wp-config.php.custom
+#COPY files/wp-config.php.custom /var/www/wp-config.php.custom
 
 # Set permissions to the script so we can execute it.
 RUN chmod +x /var/www/config.sh
