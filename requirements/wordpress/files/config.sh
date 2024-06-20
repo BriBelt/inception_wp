@@ -19,6 +19,7 @@ wp core download --allow-root
 if [ -f ./wp-config.php ]; then
 	echo "Wordpress is already installed"
 else
+	cp /var/www/wp-config.php.custom .
 	mv wp-config.php.custom wp-config.php
 fi
 
