@@ -1,14 +1,7 @@
 #!/bin/sh
 
-# check if the file exists
-# if it does do not create, run it
-# if not, create it
-# also do it in the mariadb .sh
-# /var/www/html/
-
 sleep 10 
 # Verificar la disponibilidad de MariaDB
-echo "$WORDPRESS_DB_HOST"
 #while ! mysqladmin ping -h"$WORDPRESS_DB_HOST" --silent; do
 #    echo "Waiting for MariaDB..."
 #    sleep 2
@@ -19,10 +12,6 @@ echo "$WORDPRESS_DB_HOST"
 if [ -f ./wp-config.php ]; then
 	echo "Wordpress is already installed"
 else
-##	cp /var/www/wp-config.php.custom .
-##	mv wp-config.php.custom wp-config.php
-##fi
-
 	echo "Downloading WordPress..."
 	wp core download --allow-root
 
