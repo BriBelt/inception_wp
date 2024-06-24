@@ -1,18 +1,37 @@
+# Docker-compose is a tool that helps you define and run
+# multi-container Docker applications. With this file, you
+# can specify images, environment variables, ports, networks,
+# volumes and so much more that your application needs.
+# - Simple configuration (YAML file)
+# - Environment and deployment consistency
 version: '3.3'
 
+# Definition of the different services/applications that
+# will be mounted and run (each in its own container).
 services:
+# First service
     mariadb:
         container_name: mariadb
+        # Specifies the build context, the path where 
+        # it has to look the Dockerfile for the container.
         build:
             context: ./requirements/mariadb
+        # Indicates the name and path of our .env file
+        # which contains our environment variables.
         env_file:
             - .env
+        # Exposes ports without actually opening them in the
+        # host machine, only making them available to the
+        # linked services. Exposes the default MariaDB port.
         expose:
             - 3306
+        # What network the service will connect to.
         networks:
             - wp-ntw 
+        # Mounts host paths or named volumes into the container.
         volumes:
             - mariadb-volume:/var/lib/mysql
+        # The container will restart automatically if it stops.
         restart: always
     wordpress:
         container_name: wordpress
@@ -27,6 +46,9 @@ services:
         volumes:
             - wordpress-volume:/var/www/html 
             - ./requirements/wordpress/files/www.conf:/etc/php/7.4/fpm/pool.d/www.conf
+        # Specifies the dependencies between services. Ensures
+        # that this service (wordpress) starts after the
+        # mariadb service.
         depends_on:
             - mariadb
         restart: always
@@ -36,6 +58,7 @@ services:
             context: ./requirements/nginx
         env_file:
             - .env
+        # Publishes ports on the host.
         ports:
             - 443:443
         networks:
@@ -45,14 +68,22 @@ services:
         depends_on:
             - wordpress 
         restart: always
+# Definition of the needed networks. Networks facilitate
+# communication between containers, they allow containers
+# to discover and communicate with each other by name.
 networks:
+    # Custom network named wp-ntw. Could have additional config,
+    # but in this case is not needed, so the default settings
+    # are used.
     wp-ntw:
+# Defines named volumes that can be used to persist data.
 volumes:
     wordpress-volume:
         driver: local
         driver_opts:
             type: none
             o: bind
+            # Path on the host where the volume data is stored.
             device: /home/bbeltran/data/wordpress-volume
     mariadb-volume:
         driver: local
