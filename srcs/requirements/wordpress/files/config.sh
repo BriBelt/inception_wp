@@ -16,6 +16,8 @@ else
 
 	echo "Creating a user..."
 	wp user create $WORDPRESS_USER $WORDPRESS_USER_EMAIL --user_pass=$WORDPRESS_USER_PASSWORD --allow-root
+	echo "Setting role for $WORDPRESS_USER..."
+	wp user set-role $WORDPRESS_USER editor
 	echo "Wordpress was correctly installed!"
 fi
 
