@@ -1,13 +1,6 @@
 #!/bin/sh
 
 sleep 10 
-# Verificar la disponibilidad de MariaDB
-#while ! mysqladmin ping -h"$WORDPRESS_DB_HOST" --silent; do
-#    echo "Waiting for MariaDB..."
-#    sleep 2
-#done
-##echo "Downloading WordPress..."
-##wp core download --allow-root
 
 if [ -f ./wp-config.php ]; then
 	echo "Wordpress is already installed"
@@ -22,7 +15,7 @@ else
 	wp core install --url=$DOMAIN_NAME --title="WordPress Site" --admin_user=$WORDPRESS_ADMIN_USER --admin_password=$WORDPRESS_ADMIN_PASSWORD --admin_email=$WORDPRESS_ADMIN_EMAIL --allow-root
 
 	echo "Creating a user..."
-	wp user create $WORDPRESS_USER $WORDPRESS_USER_EMAIL --role=editor --user_pass=$WORDPRESS_USER_PASSWORD --allow-root
+	wp user create $WORDPRESS_USER $WORDPRESS_USER_EMAIL --user_pass=$WORDPRESS_USER_PASSWORD --allow-root
 	echo "Wordpress was correctly installed!"
 fi
 
